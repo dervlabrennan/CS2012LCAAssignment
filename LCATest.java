@@ -15,6 +15,9 @@ public class LCATest
 	public void test() 
 	{
 		LCA.BT tree = new LCA.BT();
+
+		//test on empty tree
+		assertEquals(tree.findLCA(0, 0), -1);
 		
 		tree.root = new LCA.Node(1);
 		tree.root.left = new LCA.Node(2);
