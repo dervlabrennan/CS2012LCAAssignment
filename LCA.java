@@ -28,18 +28,18 @@ public class LCA
         private List<Integer> path2 = new ArrayList<>();
 
         // Finds the path from root node to given root of the tree.
-        int findLCA(int n1, int n2) 
+        Integer findLCA(int n1, int n2) 
         {
             path1.clear();
             path2.clear();
             return findLCAInternal(root, n1, n2);
         }
 
-        private int findLCAInternal(Node root, int n1, int n2) 
+        private Integer findLCAInternal(Node root, int n1, int n2) 
         {
             if (!findPath(root, n1, path1) || !findPath(root, n2, path2)) 
             {
-                return -1;
+                return null;
             }
             int i;
             for (i = 0; i < path1.size() && i < path2.size(); i++) 
