@@ -33,22 +33,21 @@ public class DAG
 	public ArrayList<Integer> reverseAdj(int v)
 	{ return reverseAdj[v]; }
 	
-	//void addEdge(int v, int w) add a directed edge v->w
+	//void addEdge(int v, int w) add a directed edge v->w 
 	public boolean addEdge(int v, int w)
 	{
-		// check that new edge doesn't create self loop
+		// check that new edge is within dag boundaries
 		if(v >= this.V || w >= this.V || v < 0 || w < 0)
 		{
 			return false;
 		}
-		// check that new edge doesn't create a directed cycle
+		// check that new edge doesn't create self loop/directed cycle
 		if(v != w && !hasPath(w, v) && !adj[v].contains(w))
 		{
 			adj[v].add(w);
 			reverseAdj[w].add(v);
 			return true;
 		}
-		//creates directed cycle	
 		else
 		{
 			return false;
@@ -63,7 +62,7 @@ public class DAG
 	}
 
 	//returns list of lcas of two vertices x and y
-	public ArrayList<Integer> LCA(int x, int y)
+	public ArrayList<Integer> getLCA(int x, int y)
 	{
 		ArrayList<Integer> lcas = new ArrayList<Integer>();
 		int max = Integer.MAX_VALUE;
@@ -98,7 +97,7 @@ public class DAG
 		return lcas;
 	}
 
-	private int getDistance(int x, int target)
+	public int getDistance(int x, int target)
 	{
 		if( x == target) 
 		{ 
@@ -144,19 +143,21 @@ public class DAG
 			revMarked = new boolean[G.V()];
 			DFS(G, s);
 		}
-		//standard dfs - in the flow of direction.
+		//standard dfs - in flow of direction
 		private void DFS(DAG G, int v)
 		{
 			marked[v] = true;
 			for (int w : G.adj(v))
-			if (!marked[w]) DFS(G, w);
+				if (!marked[w]) 
+					DFS(G, w);
 		}
-		//dfs against the flow of direction - to find all parents.
+		//dfs against flow of direction - to find all parents
 		private void reverseDFS(DAG G, int v)
 		{
 			revMarked[v] = true;
 			for (int w : G.reverseAdj(v))
-			if (!revMarked[w]) reverseDFS(G, w);
+				if (!revMarked[w]) 
+					reverseDFS(G, w);
 		}
 		public boolean visited(int v)
 		{ return marked[v]; }
