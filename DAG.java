@@ -81,14 +81,14 @@ public class DAG
 			{
 				xDist = getDistance(v, x);
 				yDist = getDistance(v, y);
-				if(Integer.max(xDist, yDist) < max)
-				{		
-					lcas = new ArrayList<Integer>();
+				if(Integer.max(xDist, yDist) == max)
+				{
 					lcas.add(v);
 					max = Integer.max(xDist, yDist);
 				}
-				else if(Integer.max(xDist, yDist) == max)
-				{
+				else if(Integer.max(xDist, yDist) < max)
+				{		
+					lcas = new ArrayList<Integer>();
 					lcas.add(v);
 					max = Integer.max(xDist, yDist);
 				}
