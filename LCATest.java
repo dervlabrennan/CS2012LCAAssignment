@@ -45,6 +45,7 @@ public class LCATest
 		assertNull(tree.findLCA(50, 2));
 		//test where neither node is in tree
 		assertNull(tree.findLCA(50, 100));
+<<<<<<< HEAD
 	}
 	
 	/**
