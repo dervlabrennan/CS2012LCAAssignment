@@ -1,4 +1,4 @@
-# CS2012LCAAssignment
+# CS3012LCAAssignment
 
 Assignment for Software Engineering CS3012:
 
